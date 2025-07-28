@@ -8,10 +8,10 @@ datasource db {
 }
 
 model Usuario {
-  idUsuario Int        @id @default(autoincrement())
+  idUsuario Int          @id @default(autoincrement())
   tipo      Tipo
   nome      String
-  email     String     @unique
+  email     String       @unique
   endereco  String
   hash      String
   salt      String
@@ -33,18 +33,18 @@ model Produto {
 }
 
 model Carrinho {
-  idCarrinho Int       @id @default(autoincrement())
-  idUsuario  Int       @unique
+  idCarrinho Int         @id @default(autoincrement())
+  idUsuario  Int         @unique
   valorTotal Float
-  usuario    Usuario   @relation(fields: [idUsuario], references: [idUsuario])
-  produtos   Produto[] @relation("CarrinhoToProduto")
+  usuario    Usuario     @relation(fields: [idUsuario], references: [idUsuario])
+  produtos   Produto[]   @relation("CarrinhoToProduto")
 }
 
 model Favoritos {
-  idFavoritos Int       @id @default(autoincrement())
-  idUsuario   Int       @unique
-  usuario     Usuario   @relation(fields: [idUsuario], references: [idUsuario])
-  produtos    Produto[] @relation("FavoritosToProduto")
+  idFavoritos Int        @id @default(autoincrement())
+  idUsuario   Int        @unique
+  usuario     Usuario    @relation(fields: [idUsuario], references: [idUsuario])
+  produtos    Produto[]  @relation("FavoritosToProduto")
 }
 
 enum Tipo {
